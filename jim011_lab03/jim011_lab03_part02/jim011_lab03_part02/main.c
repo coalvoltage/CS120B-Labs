@@ -7,24 +7,15 @@
 
 #include <avr/io.h>
 
-unsigned char SetBit(unsigned char x, unsigned char k, unsigned char b) {
-	return (b ? x | (0x01 << k) : x & ~(0x01 << k));
-}
-unsigned char GetBit(unsigned char x, unsigned char k) {
-	return ((x & (0x01 << k)) != 0);
-}
-
 int main(void)
 {
     DDRA = 0x00; PORTA = 0xFF;
 	DDRC = 0xFF; PORTC = 0x00;
 	unsigned char tempA;
-	//unsigned char seatbeltAndIgn;
 	unsigned char tempC;
     while (1) 
     {
 		tempA = PINA & 0x0F;
-		seatbeltAndIgn = PINA;
 		if(tempA > 12) {
 			tempC = 0x3F;
 		}

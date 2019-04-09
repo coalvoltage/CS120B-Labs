@@ -19,7 +19,7 @@ int main(void)
     DDRA = 0x00; PORTA = 0xFF;
 	DDRC = 0xFF; PORTC = 0x00;
 	unsigned char tempA;
-	//unsigned char seatbeltAndIgn;
+	unsigned char seatbeltAndIgn;
 	unsigned char tempC;
     while (1) 
     {
@@ -48,6 +48,10 @@ int main(void)
 		}
 		if (tempA <= 4){
 			tempC = tempC | 0x40;
+		}
+		
+		if(!GetBit(seatbeltAndIgn, 6) & GetBit(seatbeltAndIgn, 5) & GetBit(seatbeltAndIgn, 4)) {
+			tempC = tempC | 0x80;
 		}
 		
 		PORTC = tempC;
