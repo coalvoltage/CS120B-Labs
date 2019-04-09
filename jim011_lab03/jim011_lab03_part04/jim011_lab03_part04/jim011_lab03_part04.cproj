@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>jim011_lab03_part03</AssemblyName>
-    <Name>jim011_lab03_part03</Name>
-    <RootNamespace>jim011_lab03_part03</RootNamespace>
+    <AssemblyName>jim011_lab03_part04</AssemblyName>
+    <Name>jim011_lab03_part04</Name>
+    <RootNamespace>jim011_lab03_part04</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>

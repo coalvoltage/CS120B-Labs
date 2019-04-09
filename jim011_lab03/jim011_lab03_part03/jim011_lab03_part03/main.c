@@ -50,7 +50,7 @@ int main(void)
 			tempC = tempC | 0x40;
 		}
 		
-		if(!GetBit(seatbeltAndIgn, 6) & GetBit(seatbeltAndIgn, 5) & GetBit(seatbeltAndIgn, 4)) {
+		if(~GetBit(seatbeltAndIgn, 6) & GetBit(seatbeltAndIgn, 5) & GetBit(seatbeltAndIgn, 4)) {
 			tempC = tempC | 0x80;
 		}
 		
