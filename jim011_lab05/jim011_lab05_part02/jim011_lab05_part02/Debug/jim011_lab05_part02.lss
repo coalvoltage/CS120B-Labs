@@ -1,0 +1,529 @@
+
+jim011_lab05_part02.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000282  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000022e  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000282  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002b4  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  000002f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000881  00000000  00000000  00000314  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000007bd  00000000  00000000  00000b95  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000396  00000000  00000000  00001352  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  000016e8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000042b  00000000  00000000  0000171c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000048  00000000  00000000  00001b47  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  00001b8f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	4d c0       	rjmp	.+154    	; 0x9c <__ctors_end>
+   2:	00 00       	nop
+   4:	53 c0       	rjmp	.+166    	; 0xac <__bad_interrupt>
+   6:	00 00       	nop
+   8:	51 c0       	rjmp	.+162    	; 0xac <__bad_interrupt>
+   a:	00 00       	nop
+   c:	4f c0       	rjmp	.+158    	; 0xac <__bad_interrupt>
+   e:	00 00       	nop
+  10:	4d c0       	rjmp	.+154    	; 0xac <__bad_interrupt>
+  12:	00 00       	nop
+  14:	4b c0       	rjmp	.+150    	; 0xac <__bad_interrupt>
+  16:	00 00       	nop
+  18:	49 c0       	rjmp	.+146    	; 0xac <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	47 c0       	rjmp	.+142    	; 0xac <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	45 c0       	rjmp	.+138    	; 0xac <__bad_interrupt>
+  22:	00 00       	nop
+  24:	43 c0       	rjmp	.+134    	; 0xac <__bad_interrupt>
+  26:	00 00       	nop
+  28:	41 c0       	rjmp	.+130    	; 0xac <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	3f c0       	rjmp	.+126    	; 0xac <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	3d c0       	rjmp	.+122    	; 0xac <__bad_interrupt>
+  32:	00 00       	nop
+  34:	3b c0       	rjmp	.+118    	; 0xac <__bad_interrupt>
+  36:	00 00       	nop
+  38:	39 c0       	rjmp	.+114    	; 0xac <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	37 c0       	rjmp	.+110    	; 0xac <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	35 c0       	rjmp	.+106    	; 0xac <__bad_interrupt>
+  42:	00 00       	nop
+  44:	33 c0       	rjmp	.+102    	; 0xac <__bad_interrupt>
+  46:	00 00       	nop
+  48:	31 c0       	rjmp	.+98     	; 0xac <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	2f c0       	rjmp	.+94     	; 0xac <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	2d c0       	rjmp	.+90     	; 0xac <__bad_interrupt>
+  52:	00 00       	nop
+  54:	2b c0       	rjmp	.+86     	; 0xac <__bad_interrupt>
+  56:	00 00       	nop
+  58:	29 c0       	rjmp	.+82     	; 0xac <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	27 c0       	rjmp	.+78     	; 0xac <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	25 c0       	rjmp	.+74     	; 0xac <__bad_interrupt>
+  62:	00 00       	nop
+  64:	23 c0       	rjmp	.+70     	; 0xac <__bad_interrupt>
+  66:	00 00       	nop
+  68:	21 c0       	rjmp	.+66     	; 0xac <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	1f c0       	rjmp	.+62     	; 0xac <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	1d c0       	rjmp	.+58     	; 0xac <__bad_interrupt>
+  72:	00 00       	nop
+  74:	1b c0       	rjmp	.+54     	; 0xac <__bad_interrupt>
+  76:	00 00       	nop
+  78:	19 c0       	rjmp	.+50     	; 0xac <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	17 c0       	rjmp	.+46     	; 0xac <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	15 c0       	rjmp	.+42     	; 0xac <__bad_interrupt>
+  82:	00 00       	nop
+  84:	13 c0       	rjmp	.+38     	; 0xac <__bad_interrupt>
+  86:	00 00       	nop
+  88:	11 c0       	rjmp	.+34     	; 0xac <__bad_interrupt>
+  8a:	00 00       	nop
+  8c:	8e 00       	.word	0x008e	; ????
+  8e:	91 00       	.word	0x0091	; ????
+  90:	94 00       	.word	0x0094	; ????
+  92:	a6 00       	.word	0x00a6	; ????
+  94:	ac 00       	.word	0x00ac	; ????
+  96:	c4 00       	.word	0x00c4	; ????
+  98:	b8 00       	.word	0x00b8	; ????
+  9a:	c7 00       	.word	0x00c7	; ????
+
+0000009c <__ctors_end>:
+  9c:	11 24       	eor	r1, r1
+  9e:	1f be       	out	0x3f, r1	; 63
+  a0:	cf ef       	ldi	r28, 0xFF	; 255
+  a2:	d0 e4       	ldi	r29, 0x40	; 64
+  a4:	de bf       	out	0x3e, r29	; 62
+  a6:	cd bf       	out	0x3d, r28	; 61
+  a8:	02 d0       	rcall	.+4      	; 0xae <main>
+  aa:	bf c0       	rjmp	.+382    	; 0x22a <_exit>
+
+000000ac <__bad_interrupt>:
+  ac:	a9 cf       	rjmp	.-174    	; 0x0 <__vectors>
+
+000000ae <main>:
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+  ae:	cf 93       	push	r28
+  b0:	df 93       	push	r29
+  b2:	00 d0       	rcall	.+0      	; 0xb4 <main+0x6>
+  b4:	1f 92       	push	r1
+  b6:	cd b7       	in	r28, 0x3d	; 61
+  b8:	de b7       	in	r29, 0x3e	; 62
+	DDRA = 0x00;
+  ba:	81 e2       	ldi	r24, 0x21	; 33
+  bc:	90 e0       	ldi	r25, 0x00	; 0
+  be:	fc 01       	movw	r30, r24
+  c0:	10 82       	st	Z, r1
+	PORTA = 0xFF;
+  c2:	82 e2       	ldi	r24, 0x22	; 34
+  c4:	90 e0       	ldi	r25, 0x00	; 0
+  c6:	2f ef       	ldi	r18, 0xFF	; 255
+  c8:	fc 01       	movw	r30, r24
+  ca:	20 83       	st	Z, r18
+	DDRB = 0xFF;
+  cc:	84 e2       	ldi	r24, 0x24	; 36
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+  d0:	2f ef       	ldi	r18, 0xFF	; 255
+  d2:	fc 01       	movw	r30, r24
+  d4:	20 83       	st	Z, r18
+	PORTB = 0x00;
+  d6:	85 e2       	ldi	r24, 0x25	; 37
+  d8:	90 e0       	ldi	r25, 0x00	; 0
+  da:	fc 01       	movw	r30, r24
+  dc:	10 82       	st	Z, r1
+	char unsigned a = 0;
+  de:	1b 82       	std	Y+3, r1	; 0x03
+	char unsigned b = 0;
+  e0:	19 82       	std	Y+1, r1	; 0x01
+    /* Replace with your application code */
+	enum state {start,init,maintance,reset,sub, subRel,add, addRel} state;
+	state = start;
+  e2:	1a 82       	std	Y+2, r1	; 0x02
+    while (1) 
+    {
+		a = (~PINA) & 0x03;
+  e4:	80 e2       	ldi	r24, 0x20	; 32
+  e6:	90 e0       	ldi	r25, 0x00	; 0
+  e8:	fc 01       	movw	r30, r24
+  ea:	80 81       	ld	r24, Z
+  ec:	80 95       	com	r24
+  ee:	83 70       	andi	r24, 0x03	; 3
+  f0:	8b 83       	std	Y+3, r24	; 0x03
+		//Transition?
+		switch(state){
+  f2:	8a 81       	ldd	r24, Y+2	; 0x02
+  f4:	88 2f       	mov	r24, r24
+  f6:	90 e0       	ldi	r25, 0x00	; 0
+  f8:	09 2e       	mov	r0, r25
+  fa:	00 0c       	add	r0, r0
+  fc:	aa 0b       	sbc	r26, r26
+  fe:	bb 0b       	sbc	r27, r27
+ 100:	40 e0       	ldi	r20, 0x00	; 0
+ 102:	50 e0       	ldi	r21, 0x00	; 0
+ 104:	27 e0       	ldi	r18, 0x07	; 7
+ 106:	30 e0       	ldi	r19, 0x00	; 0
+ 108:	84 1b       	sub	r24, r20
+ 10a:	95 0b       	sbc	r25, r21
+ 10c:	28 17       	cp	r18, r24
+ 10e:	39 07       	cpc	r19, r25
+ 110:	08 f4       	brcc	.+2      	; 0x114 <main+0x66>
+ 112:	40 c0       	rjmp	.+128    	; 0x194 <main+0xe6>
+ 114:	8a 5b       	subi	r24, 0xBA	; 186
+ 116:	9f 4f       	sbci	r25, 0xFF	; 255
+ 118:	fc 01       	movw	r30, r24
+ 11a:	7e c0       	rjmp	.+252    	; 0x218 <__tablejump2__>
+		case start:
+			state = init;
+ 11c:	81 e0       	ldi	r24, 0x01	; 1
+ 11e:	8a 83       	std	Y+2, r24	; 0x02
+			break;
+ 120:	43 c0       	rjmp	.+134    	; 0x1a8 <main+0xfa>
+		case init:
+			state = maintance;
+ 122:	82 e0       	ldi	r24, 0x02	; 2
+ 124:	8a 83       	std	Y+2, r24	; 0x02
+			break;
+ 126:	40 c0       	rjmp	.+128    	; 0x1a8 <main+0xfa>
+		case maintance:
+			if (a==1){
+ 128:	8b 81       	ldd	r24, Y+3	; 0x03
+ 12a:	81 30       	cpi	r24, 0x01	; 1
+ 12c:	19 f4       	brne	.+6      	; 0x134 <main+0x86>
+				state = add;
+ 12e:	86 e0       	ldi	r24, 0x06	; 6
+ 130:	8a 83       	std	Y+2, r24	; 0x02
+				state = sub;
+			}
+			else if (a==3){
+				state = reset;
+			}
+			break;
+ 132:	33 c0       	rjmp	.+102    	; 0x19a <main+0xec>
+			break;
+		case maintance:
+			if (a==1){
+				state = add;
+			}
+			else if (a==2){
+ 134:	8b 81       	ldd	r24, Y+3	; 0x03
+ 136:	82 30       	cpi	r24, 0x02	; 2
+ 138:	19 f4       	brne	.+6      	; 0x140 <main+0x92>
+				state = sub;
+ 13a:	84 e0       	ldi	r24, 0x04	; 4
+ 13c:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			else if (a==3){
+				state = reset;
+			}
+			break;
+ 13e:	2d c0       	rjmp	.+90     	; 0x19a <main+0xec>
+				state = add;
+			}
+			else if (a==2){
+				state = sub;
+			}
+			else if (a==3){
+ 140:	8b 81       	ldd	r24, Y+3	; 0x03
+ 142:	83 30       	cpi	r24, 0x03	; 3
+ 144:	51 f5       	brne	.+84     	; 0x19a <main+0xec>
+				state = reset;
+ 146:	83 e0       	ldi	r24, 0x03	; 3
+ 148:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			break;
+ 14a:	27 c0       	rjmp	.+78     	; 0x19a <main+0xec>
+		case reset:
+			if(a == 0) {
+ 14c:	8b 81       	ldd	r24, Y+3	; 0x03
+ 14e:	88 23       	and	r24, r24
+ 150:	31 f5       	brne	.+76     	; 0x19e <main+0xf0>
+				state = maintance;
+ 152:	82 e0       	ldi	r24, 0x02	; 2
+ 154:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			break;
+ 156:	23 c0       	rjmp	.+70     	; 0x19e <main+0xf0>
+		case sub:
+			if(a == 0) {
+ 158:	8b 81       	ldd	r24, Y+3	; 0x03
+ 15a:	88 23       	and	r24, r24
+ 15c:	19 f4       	brne	.+6      	; 0x164 <main+0xb6>
+				state = subRel;
+ 15e:	85 e0       	ldi	r24, 0x05	; 5
+ 160:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			else if(a == 3) {
+				state = reset;
+			}
+			break;
+ 162:	1f c0       	rjmp	.+62     	; 0x1a2 <main+0xf4>
+			break;
+		case sub:
+			if(a == 0) {
+				state = subRel;
+			}
+			else if(a == 3) {
+ 164:	8b 81       	ldd	r24, Y+3	; 0x03
+ 166:	83 30       	cpi	r24, 0x03	; 3
+ 168:	e1 f4       	brne	.+56     	; 0x1a2 <main+0xf4>
+				state = reset;
+ 16a:	83 e0       	ldi	r24, 0x03	; 3
+ 16c:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			break;
+ 16e:	19 c0       	rjmp	.+50     	; 0x1a2 <main+0xf4>
+		case add:
+			if(a == 0) {
+ 170:	8b 81       	ldd	r24, Y+3	; 0x03
+ 172:	88 23       	and	r24, r24
+ 174:	19 f4       	brne	.+6      	; 0x17c <main+0xce>
+				state = addRel;
+ 176:	87 e0       	ldi	r24, 0x07	; 7
+ 178:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			else if(a == 3) {
+				state = reset;
+			}
+			break;
+ 17a:	15 c0       	rjmp	.+42     	; 0x1a6 <main+0xf8>
+			break;
+		case add:
+			if(a == 0) {
+				state = addRel;
+			}
+			else if(a == 3) {
+ 17c:	8b 81       	ldd	r24, Y+3	; 0x03
+ 17e:	83 30       	cpi	r24, 0x03	; 3
+ 180:	91 f4       	brne	.+36     	; 0x1a6 <main+0xf8>
+				state = reset;
+ 182:	83 e0       	ldi	r24, 0x03	; 3
+ 184:	8a 83       	std	Y+2, r24	; 0x02
+			}
+			break;
+ 186:	0f c0       	rjmp	.+30     	; 0x1a6 <main+0xf8>
+		case subRel:
+			state = maintance;
+ 188:	82 e0       	ldi	r24, 0x02	; 2
+ 18a:	8a 83       	std	Y+2, r24	; 0x02
+			break;
+ 18c:	0d c0       	rjmp	.+26     	; 0x1a8 <main+0xfa>
+		case addRel:
+			state = maintance;
+ 18e:	82 e0       	ldi	r24, 0x02	; 2
+ 190:	8a 83       	std	Y+2, r24	; 0x02
+			break;
+ 192:	0a c0       	rjmp	.+20     	; 0x1a8 <main+0xfa>
+		default:
+			state = init;
+ 194:	81 e0       	ldi	r24, 0x01	; 1
+ 196:	8a 83       	std	Y+2, r24	; 0x02
+			break;
+ 198:	07 c0       	rjmp	.+14     	; 0x1a8 <main+0xfa>
+				state = sub;
+			}
+			else if (a==3){
+				state = reset;
+			}
+			break;
+ 19a:	00 00       	nop
+ 19c:	05 c0       	rjmp	.+10     	; 0x1a8 <main+0xfa>
+		case reset:
+			if(a == 0) {
+				state = maintance;
+			}
+			break;
+ 19e:	00 00       	nop
+ 1a0:	03 c0       	rjmp	.+6      	; 0x1a8 <main+0xfa>
+				state = subRel;
+			}
+			else if(a == 3) {
+				state = reset;
+			}
+			break;
+ 1a2:	00 00       	nop
+ 1a4:	01 c0       	rjmp	.+2      	; 0x1a8 <main+0xfa>
+				state = addRel;
+			}
+			else if(a == 3) {
+				state = reset;
+			}
+			break;
+ 1a6:	00 00       	nop
+		default:
+			state = init;
+			break;
+		}
+		//State Action
+		switch(state){
+ 1a8:	8a 81       	ldd	r24, Y+2	; 0x02
+ 1aa:	88 2f       	mov	r24, r24
+ 1ac:	90 e0       	ldi	r25, 0x00	; 0
+ 1ae:	84 30       	cpi	r24, 0x04	; 4
+ 1b0:	91 05       	cpc	r25, r1
+ 1b2:	29 f1       	breq	.+74     	; 0x1fe <main+0x150>
+ 1b4:	85 30       	cpi	r24, 0x05	; 5
+ 1b6:	91 05       	cpc	r25, r1
+ 1b8:	34 f4       	brge	.+12     	; 0x1c6 <main+0x118>
+ 1ba:	81 30       	cpi	r24, 0x01	; 1
+ 1bc:	91 05       	cpc	r25, r1
+ 1be:	61 f0       	breq	.+24     	; 0x1d8 <main+0x12a>
+ 1c0:	03 97       	sbiw	r24, 0x03	; 3
+ 1c2:	69 f0       	breq	.+26     	; 0x1de <main+0x130>
+					b++;
+				}
+				break;
+					
+			default:
+				break;
+ 1c4:	23 c0       	rjmp	.+70     	; 0x20c <main+0x15e>
+		default:
+			state = init;
+			break;
+		}
+		//State Action
+		switch(state){
+ 1c6:	86 30       	cpi	r24, 0x06	; 6
+ 1c8:	91 05       	cpc	r25, r1
+ 1ca:	d9 f0       	breq	.+54     	; 0x202 <main+0x154>
+ 1cc:	86 30       	cpi	r24, 0x06	; 6
+ 1ce:	91 05       	cpc	r25, r1
+ 1d0:	44 f0       	brlt	.+16     	; 0x1e2 <main+0x134>
+ 1d2:	07 97       	sbiw	r24, 0x07	; 7
+ 1d4:	69 f0       	breq	.+26     	; 0x1f0 <main+0x142>
+					b++;
+				}
+				break;
+					
+			default:
+				break;
+ 1d6:	1a c0       	rjmp	.+52     	; 0x20c <main+0x15e>
+			break;
+		}
+		//State Action
+		switch(state){
+			case init:
+				b = 7;
+ 1d8:	87 e0       	ldi	r24, 0x07	; 7
+ 1da:	89 83       	std	Y+1, r24	; 0x01
+				break;
+ 1dc:	17 c0       	rjmp	.+46     	; 0x20c <main+0x15e>
+					
+			case reset:
+				b= 0;
+ 1de:	19 82       	std	Y+1, r1	; 0x01
+				break;
+ 1e0:	15 c0       	rjmp	.+42     	; 0x20c <main+0x15e>
+			case add:
+					
+				break;
+					
+			case subRel:
+				if(b > 0) {
+ 1e2:	89 81       	ldd	r24, Y+1	; 0x01
+ 1e4:	88 23       	and	r24, r24
+ 1e6:	79 f0       	breq	.+30     	; 0x206 <main+0x158>
+					b--;
+ 1e8:	89 81       	ldd	r24, Y+1	; 0x01
+ 1ea:	81 50       	subi	r24, 0x01	; 1
+ 1ec:	89 83       	std	Y+1, r24	; 0x01
+				}
+			break;
+ 1ee:	0b c0       	rjmp	.+22     	; 0x206 <main+0x158>
+					
+			case addRel:
+				if(b < 9) {
+ 1f0:	89 81       	ldd	r24, Y+1	; 0x01
+ 1f2:	89 30       	cpi	r24, 0x09	; 9
+ 1f4:	50 f4       	brcc	.+20     	; 0x20a <main+0x15c>
+					b++;
+ 1f6:	89 81       	ldd	r24, Y+1	; 0x01
+ 1f8:	8f 5f       	subi	r24, 0xFF	; 255
+ 1fa:	89 83       	std	Y+1, r24	; 0x01
+				}
+				break;
+ 1fc:	06 c0       	rjmp	.+12     	; 0x20a <main+0x15c>
+				b= 0;
+				break;
+					
+			case sub:
+					
+				break;
+ 1fe:	00 00       	nop
+ 200:	05 c0       	rjmp	.+10     	; 0x20c <main+0x15e>
+					
+			case add:
+					
+				break;
+ 202:	00 00       	nop
+ 204:	03 c0       	rjmp	.+6      	; 0x20c <main+0x15e>
+					
+			case subRel:
+				if(b > 0) {
+					b--;
+				}
+			break;
+ 206:	00 00       	nop
+ 208:	01 c0       	rjmp	.+2      	; 0x20c <main+0x15e>
+					
+			case addRel:
+				if(b < 9) {
+					b++;
+				}
+				break;
+ 20a:	00 00       	nop
+					
+			default:
+				break;
+		}
+		PORTB = b;
+ 20c:	85 e2       	ldi	r24, 0x25	; 37
+ 20e:	90 e0       	ldi	r25, 0x00	; 0
+ 210:	29 81       	ldd	r18, Y+1	; 0x01
+ 212:	fc 01       	movw	r30, r24
+ 214:	20 83       	st	Z, r18
+    }
+ 216:	66 cf       	rjmp	.-308    	; 0xe4 <main+0x36>
+
+00000218 <__tablejump2__>:
+ 218:	ee 0f       	add	r30, r30
+ 21a:	ff 1f       	adc	r31, r31
+ 21c:	00 24       	eor	r0, r0
+ 21e:	00 1c       	adc	r0, r0
+ 220:	0b be       	out	0x3b, r0	; 59
+ 222:	07 90       	elpm	r0, Z+
+ 224:	f6 91       	elpm	r31, Z
+ 226:	e0 2d       	mov	r30, r0
+ 228:	09 94       	ijmp
+
+0000022a <_exit>:
+ 22a:	f8 94       	cli
+
+0000022c <__stop_program>:
+ 22c:	ff cf       	rjmp	.-2      	; 0x22c <__stop_program>

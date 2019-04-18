@@ -10,38 +10,38 @@
 int main(void)
 {
     DDRA = 0x00; PORTA = 0xFF;
-	DDRC = 0xFF; PORTC = 0x00;
+	DDRB = 0xFF; PORTB = 0x00;
 	unsigned char tempA;
-	unsigned char tempC;
+	unsigned char tempB;
     while (1) 
     {
-		tempA = PINA & 0x0F;
+		tempA = ~PINA & 0x0F;
 		if(tempA > 12) {
-			tempC = 0x3F;
+			tempB = 0x3F;
 		}
 		else if(tempA > 9) {
-			tempC = 0x3E;
+			tempB = 0x3E;
 		}
 		else if(tempA > 6) {
-			tempC = 0x3B;
+			tempB = 0x3C;
 		}
 		else if(tempA > 4) {
-			tempC = 0x38;
+			tempB = 0x38;
 		}
 		else if(tempA > 2) {
-			tempC = 0x30;
+			tempB = 0x30;
 		}
 		else if(tempA > 0) {
-			tempC = 0x20;
+			tempB = 0x20;
 		}
 		else {
-			tempC = 0x00;
+			tempB = 0x00;
 		}
 		if (tempA <= 4){
-			tempC = tempC | 0x40;
+			tempB = tempB | 0x40;
 		}
 		
-		PORTC = tempC;
+		PORTB = tempB;
 		
     }
 }
