@@ -84,8 +84,10 @@ int main(void)
 			}
 			break;
 			
+			case buttonPres:
+			break;
+			
 			default:
-			state = start;
 			break;
 		};
 		PORTB = outputB;

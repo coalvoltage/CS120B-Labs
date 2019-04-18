@@ -3,11 +3,11 @@ jim011_lab05_part03.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000192  2**0
+  0 .data         00000000  00800100  00800100  00000194  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000013e  00000000  00000000  00000054  2**1
+  1 .text         00000140  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00000192  2**0
+  2 .comment      00000030  00000000  00000000  00000194  2**0
                   CONTENTS, READONLY
   3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001c4  2**2
                   CONTENTS, READONLY
@@ -17,15 +17,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   6 .debug_abbrev 000007e1  00000000  00000000  00000ae4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000002b2  00000000  00000000  000012c5  2**0
+  7 .debug_line   000002b8  00000000  00000000  000012c5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000034  00000000  00000000  00001578  2**2
+  8 .debug_frame  00000034  00000000  00000000  00001580  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000045a  00000000  00000000  000015ac  2**0
+  9 .debug_str    0000045a  00000000  00000000  000015b4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000013b  00000000  00000000  00001a06  2**0
+ 10 .debug_loc    00000131  00000000  00000000  00001a0e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000010  00000000  00000000  00001b41  2**0
+ 11 .debug_ranges 00000010  00000000  00000000  00001b3f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -110,7 +110,7 @@ Disassembly of section .text:
   94:	de bf       	out	0x3e, r29	; 62
   96:	cd bf       	out	0x3d, r28	; 61
   98:	02 d0       	rcall	.+4      	; 0x9e <main>
-  9a:	4f c0       	rjmp	.+158    	; 0x13a <_exit>
+  9a:	50 c0       	rjmp	.+160    	; 0x13c <_exit>
 
 0000009c <__bad_interrupt>:
   9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
@@ -180,47 +180,53 @@ int main(void)
 			outputB = sequence[index];
 			break;
   d0:	a2 e0       	ldi	r26, 0x02	; 2
-				index = 0;
-			}
+			state = loop;
+			break;
+			
+			case loop:
+			if(inputA) {
+				state = buttonPres;
+  d2:	13 e0       	ldi	r17, 0x03	; 3
+			case buttonRel:
+			state = loop;
 			break;
 			
 			default:
 			state = start;
-  d2:	60 e0       	ldi	r22, 0x00	; 0
-  d4:	74 e0       	ldi	r23, 0x04	; 4
-    while (1) 
-    {
+  d4:	60 e0       	ldi	r22, 0x00	; 0
+  d6:	74 e0       	ldi	r23, 0x04	; 4
 		//read input
 		inputA = ~PINA & 0x01;
 		//transition
 		switch(state) {
-  d6:	b1 e0       	ldi	r27, 0x01	; 1
+			case start:
+			state = init;
+  d8:	b1 e0       	ldi	r27, 0x01	; 1
 	const unsigned char ARRAY_LIMIT = 4;
 	
     while (1) 
     {
 		//read input
 		inputA = ~PINA & 0x01;
-  d8:	90 b1       	in	r25, 0x00	; 0
-  da:	29 2f       	mov	r18, r25
-  dc:	21 70       	andi	r18, 0x01	; 1
-  de:	30 e0       	ldi	r19, 0x00	; 0
+  da:	90 b1       	in	r25, 0x00	; 0
+  dc:	29 2f       	mov	r18, r25
+  de:	21 70       	andi	r18, 0x01	; 1
+  e0:	30 e0       	ldi	r19, 0x00	; 0
 		//transition
 		switch(state) {
-  e0:	82 30       	cpi	r24, 0x02	; 2
-  e2:	61 f0       	breq	.+24     	; 0xfc <main+0x5e>
-  e4:	28 f4       	brcc	.+10     	; 0xf0 <main+0x52>
-  e6:	88 23       	and	r24, r24
-  e8:	f1 f0       	breq	.+60     	; 0x126 <main+0x88>
-  ea:	81 30       	cpi	r24, 0x01	; 1
-  ec:	71 f0       	breq	.+28     	; 0x10a <main+0x6c>
-  ee:	04 c0       	rjmp	.+8      	; 0xf8 <main+0x5a>
-  f0:	83 30       	cpi	r24, 0x03	; 3
-  f2:	39 f0       	breq	.+14     	; 0x102 <main+0x64>
-  f4:	84 30       	cpi	r24, 0x04	; 4
-  f6:	49 f0       	breq	.+18     	; 0x10a <main+0x6c>
-  f8:	86 2f       	mov	r24, r22
-  fa:	1d c0       	rjmp	.+58     	; 0x136 <main+0x98>
+  e2:	82 30       	cpi	r24, 0x02	; 2
+  e4:	59 f0       	breq	.+22     	; 0xfc <main+0x5e>
+  e6:	28 f4       	brcc	.+10     	; 0xf2 <main+0x54>
+  e8:	88 23       	and	r24, r24
+  ea:	e1 f0       	breq	.+56     	; 0x124 <main+0x86>
+  ec:	81 30       	cpi	r24, 0x01	; 1
+  ee:	61 f0       	breq	.+24     	; 0x108 <main+0x6a>
+  f0:	21 c0       	rjmp	.+66     	; 0x134 <main+0x96>
+  f2:	83 30       	cpi	r24, 0x03	; 3
+  f4:	31 f0       	breq	.+12     	; 0x102 <main+0x64>
+  f6:	84 30       	cpi	r24, 0x04	; 4
+  f8:	39 f0       	breq	.+14     	; 0x108 <main+0x6a>
+  fa:	1c c0       	rjmp	.+56     	; 0x134 <main+0x96>
 			case init:
 			state = loop;
 			break;
@@ -228,8 +234,8 @@ int main(void)
 			case loop:
 			if(inputA) {
   fc:	23 2b       	or	r18, r19
-  fe:	b9 f0       	breq	.+46     	; 0x12e <main+0x90>
- 100:	04 c0       	rjmp	.+8      	; 0x10a <main+0x6c>
+  fe:	e1 f0       	breq	.+56     	; 0x138 <main+0x9a>
+ 100:	03 c0       	rjmp	.+6      	; 0x108 <main+0x6a>
 				state = buttonPres;
 			}
 			break;
@@ -237,40 +243,40 @@ int main(void)
 			case buttonPres:
 			if(!inputA) {
  102:	23 2b       	or	r18, r19
- 104:	59 f4       	brne	.+22     	; 0x11c <main+0x7e>
-				index = 0;
-			}
-			break;
-			
-			default:
-			state = start;
- 106:	86 2f       	mov	r24, r22
- 108:	16 c0       	rjmp	.+44     	; 0x136 <main+0x98>
+ 104:	51 f4       	brne	.+20     	; 0x11a <main+0x7c>
+ 106:	14 c0       	rjmp	.+40     	; 0x130 <main+0x92>
 			index = 0;
 			outputB = 0x00;
 			break;
 			
 			case loop:
 			outputB = sequence[index];
- 10a:	e1 e0       	ldi	r30, 0x01	; 1
- 10c:	f0 e0       	ldi	r31, 0x00	; 0
- 10e:	ec 0f       	add	r30, r28
- 110:	fd 1f       	adc	r31, r29
- 112:	e5 0f       	add	r30, r21
- 114:	f1 1d       	adc	r31, r1
- 116:	40 81       	ld	r20, Z
+ 108:	e1 e0       	ldi	r30, 0x01	; 1
+ 10a:	f0 e0       	ldi	r31, 0x00	; 0
+ 10c:	ec 0f       	add	r30, r28
+ 10e:	fd 1f       	adc	r31, r29
+ 110:	e5 0f       	add	r30, r21
+ 112:	f1 1d       	adc	r31, r1
+ 114:	40 81       	ld	r20, Z
 			break;
- 118:	8a 2f       	mov	r24, r26
- 11a:	0d c0       	rjmp	.+26     	; 0x136 <main+0x98>
+ 116:	8a 2f       	mov	r24, r26
+ 118:	0b c0       	rjmp	.+22     	; 0x130 <main+0x92>
 			
 			case buttonRel:
 			if(index < ARRAY_LIMIT) {
- 11c:	54 30       	cpi	r21, 0x04	; 4
- 11e:	48 f4       	brcc	.+18     	; 0x132 <main+0x94>
+ 11a:	54 30       	cpi	r21, 0x04	; 4
+ 11c:	38 f4       	brcc	.+14     	; 0x12c <main+0x8e>
 				index++;
- 120:	5f 5f       	subi	r21, 0xFF	; 255
- 122:	87 2f       	mov	r24, r23
- 124:	08 c0       	rjmp	.+16     	; 0x136 <main+0x98>
+ 11e:	5f 5f       	subi	r21, 0xFF	; 255
+ 120:	87 2f       	mov	r24, r23
+ 122:	06 c0       	rjmp	.+12     	; 0x130 <main+0x92>
+		//read input
+		inputA = ~PINA & 0x01;
+		//transition
+		switch(state) {
+			case start:
+			state = init;
+ 124:	8b 2f       	mov	r24, r27
 		switch(state) {
 			case start:
 			break;
@@ -280,42 +286,43 @@ int main(void)
  126:	50 e0       	ldi	r21, 0x00	; 0
 			outputB = 0x00;
  128:	46 2f       	mov	r20, r22
-    while (1) 
-    {
-		//read input
-		inputA = ~PINA & 0x01;
-		//transition
-		switch(state) {
- 12a:	8b 2f       	mov	r24, r27
- 12c:	04 c0       	rjmp	.+8      	; 0x136 <main+0x98>
-				index = 0;
-			}
-			break;
-			
-			default:
-			state = start;
- 12e:	86 2f       	mov	r24, r22
- 130:	02 c0       	rjmp	.+4      	; 0x136 <main+0x98>
+ 12a:	02 c0       	rjmp	.+4      	; 0x130 <main+0x92>
+ 12c:	87 2f       	mov	r24, r23
 			case buttonRel:
 			if(index < ARRAY_LIMIT) {
 				index++;
 			}
 			else {
 				index = 0;
- 132:	50 e0       	ldi	r21, 0x00	; 0
- 134:	87 2f       	mov	r24, r23
+ 12e:	50 e0       	ldi	r21, 0x00	; 0
+			break;
 			
 			default:
-			state = start;
 			break;
 		};
 		PORTB = outputB;
- 136:	45 b9       	out	0x05, r20	; 5
+ 130:	45 b9       	out	0x05, r20	; 5
     }
- 138:	cf cf       	rjmp	.-98     	; 0xd8 <main+0x3a>
+ 132:	d3 cf       	rjmp	.-90     	; 0xda <main+0x3c>
+			case buttonRel:
+			state = loop;
+			break;
+			
+			default:
+			state = start;
+ 134:	86 2f       	mov	r24, r22
+ 136:	fc cf       	rjmp	.-8      	; 0x130 <main+0x92>
+			state = loop;
+			break;
+			
+			case loop:
+			if(inputA) {
+				state = buttonPres;
+ 138:	81 2f       	mov	r24, r17
+ 13a:	fa cf       	rjmp	.-12     	; 0x130 <main+0x92>
 
-0000013a <_exit>:
- 13a:	f8 94       	cli
+0000013c <_exit>:
+ 13c:	f8 94       	cli
 
-0000013c <__stop_program>:
- 13c:	ff cf       	rjmp	.-2      	; 0x13c <__stop_program>
+0000013e <__stop_program>:
+ 13e:	ff cf       	rjmp	.-2      	; 0x13e <__stop_program>
