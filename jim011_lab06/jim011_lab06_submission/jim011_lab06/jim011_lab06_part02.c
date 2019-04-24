@@ -1,7 +1,7 @@
 /*Jimmy Im : jim011@ucr.edu
  *James Luo : jluo011@ucr.edu
  *Lab Section: 024
- *Assignment: Lab 6 Exercise 1
+ *Assignment: Lab 6 Exercise 2
  *
  *I acknowledge all content contained herein, excluding template or example
  *code, is my own original work.
@@ -67,35 +67,36 @@ void TimerSet(unsigned long M) {
 	_avr_timer_cntcurr = _avr_timer_M;
 }
 
-enum States {start, init, flicker, nextPattern} state;
+enum States {start, init, flicker, nextPattern,gameoverPress,gameover,resetPress} state;
 unsigned char tempB = 0x00;
+unsigned char tempA = 0x00;
 unsigned char outputIndex = 0;
 unsigned short count = 0;
 const unsigned short PERIOD = 100;
-const unsigned short SEC1 = 10;
+const unsigned short MSEC3 = 3;
 unsigned char ledPattern[3] = {0x01, 0x02, 0x04};
 
 void Tick();
 
 int main(void)
 {
-    DDRB = 0xFF; PORTB = 0x00;
-	
+	DDRB = 0xFF; PORTB = 0x00;
+	DDRA = 0x00; PORTA = 0xFF;
 	TimerSet(PERIOD);
 	TimerOn();
 	
-    while (1) 
-    {
+	while (1)
+	{
 		Tick();
 		while(!TimerFlag){}
 		TimerFlag = 0;
 		
-    }
+	}
 }
 
 void Tick() {
 	//Input
-	
+	tempA = ~PINA & 0x01;
 	//Transition
 	switch(state) {
 		case start:
@@ -107,10 +108,31 @@ void Tick() {
 		break;
 		
 		case flicker:
-		if(count >= SEC1) {
+		if(count >= MSEC3) {
 			state = nextPattern;
 		}
+		if (tempA == 0x01){
+			state = gameoverPress;
+		}
 		break;
+		
+		case gameoverPress:
+			if (tempA == 0x00){
+				state = gameover;
+			}
+			break;
+			
+		case gameover:
+			if (tempA == 0x01){
+			state = resetPress;
+			}
+			break;
+			
+		case resetPress:
+			if (tempA == 0x00){
+				state = flicker;
+			}
+			break;
 		
 		case nextPattern:
 		state = flicker;
@@ -125,19 +147,14 @@ void Tick() {
 		break;
 		
 		case init:
-		count = 0;
-		outputIndex = 0;
-		break;
+			count = 0;
+			outputIndex = 0;
+			break;
 		
 		case flicker:
-		if(count % 2 == 1) {
 			tempB = ledPattern[outputIndex];
-		}
-		else {
-			tempB = 0x00;
-		}
-		count++;
-		break;
+			count++;
+			break;
 		
 		case nextPattern:
 		if(outputIndex > 1) {
@@ -147,6 +164,19 @@ void Tick() {
 			outputIndex++;
 		}
 		count = 0;
+		break;
+		
+		case gameoverPress:
+		count = 0;
+		tempB = ledPattern[outputIndex];
+		break;
+		
+		case gameover:
+		tempB = ledPattern[outputIndex];
+		break;
+		
+		case resetPress:
+		tempB = ledPattern[outputIndex];
 		break;
 		
 		default:
